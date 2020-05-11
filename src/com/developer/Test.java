@@ -49,8 +49,17 @@ public class Test {
 		customList.insert(15);
 		customList.insert(1000);
 		customList.traverseList();
-		customList.remove(15);
-		System.out.println("\n" +customList.size());
+		//customList.remove(15);
+		//System.out.println("\n" +customList.size());
+		customList.traverseList();
+		
+		System.out.print("Get Middle node: ");
+		System.out.println(customList.getMiddleNode());
+		customList.reverse();
+		customList.traverseList();
+		System.out.println();
+		customList.reverse();
+		System.out.println();
 		customList.traverseList();
 		
 	}
