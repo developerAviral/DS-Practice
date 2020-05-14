@@ -4,7 +4,7 @@ public class App {
 
 	public static void main(String[] args) {
 
-		QueueUsingStack stack = new QueueUsingStack();
+		QueueUsingRecursion stack = new QueueUsingRecursion();
 
 		stack.enqueue((11));
 		stack.enqueue(110);
