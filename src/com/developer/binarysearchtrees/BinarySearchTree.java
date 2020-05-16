@@ -1,7 +1,19 @@
 package com.developer.binarysearchtrees;
 
-public class BinarySearchTree<T> implements Tree<T> {
+public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 
+	private Node<T> root;
+	
+	public void insert(T data) {
+		
+		if(root == null) {
+			this.root = new Node<T>(data);
+		}
+		else {
+			insertNode(data, this.root);
+		}
+	}
+	
 	@Override
 	public void traverse() {
 		// TODO Auto-generated method stub
@@ -9,8 +21,23 @@ public class BinarySearchTree<T> implements Tree<T> {
 	}
 
 	@Override
-	public void insert(T data) {
-		// TODO Auto-generated method stub
+	public void insertNode(T data, Node<T> node) {
+		
+		if(data.compareTo(node.getData()) < 0) {
+			if(node.getLeftNode() != null)
+				insertNode(data, node.getLeftNode());
+			else {
+				node.setLeftNode(new Node<T>(data));
+			}
+		}
+		else {
+			if(node.getRightNode() != null ) {
+				insertNode(data, node.getRightNode());
+			}
+			else {
+				node.setRightNode(new Node<T>(data));
+			}
+		}
 		
 	}
 
