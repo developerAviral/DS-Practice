@@ -30,5 +30,8 @@ public class App {
 		System.out.println(palindromeString.isPalindrom("Hello"));
 		System.out.println(palindromeString.isPalindrom("ollo"));
 		
+		/*********************String Reversal*****************/
+		ReverseString reverse = new ReverseString();
+		System.out.println(reverse.getReverseString("Hello"));
 	}
 }
