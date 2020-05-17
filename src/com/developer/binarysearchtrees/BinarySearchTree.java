@@ -31,7 +31,9 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 	
 	@Override
 	public void traverse() {
-		// TODO Auto-generated method stub
+
+		if(this.root != null)
+			inOrderTraversal(this.root);
 		
 	}
 
@@ -78,4 +80,14 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 		return node.getData();
 	}
 
+	private void inOrderTraversal(Node<T> node) {
+		
+		if(node.getLeftNode() != null)
+			inOrderTraversal(node.getLeftNode());
+		
+		System.out.print(node.getData() + "--->");
+		
+		if(node.getRightNode() != null)
+			inOrderTraversal(node.getRightNode());
+	}
 }

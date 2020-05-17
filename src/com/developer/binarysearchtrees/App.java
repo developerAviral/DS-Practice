@@ -16,5 +16,7 @@ public class App {
 		
 		System.out.println("Max value: " + tree.getMaxValue());
 		System.out.println("Min value: " + tree.getMinValue());
+		
+		tree.traverse();
 	}
 }
