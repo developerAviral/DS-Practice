@@ -4,6 +4,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 
 	private Node<T> root;
 	
+	@Override
 	public void insert(T data) {
 		
 		if(root == null) {
@@ -15,12 +16,26 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 	}
 	
 	@Override
+	public T getMaxValue() {
+		if(this.root == null) return null;
+		
+		return getMax(this.root);
+	}
+	
+	@Override
+	public T getMinValue() {
+		if(this.root == null) return null;
+		
+		return getMin(this.root);
+	}
+	
+	@Override
 	public void traverse() {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+	
 	public void insertNode(T data, Node<T> node) {
 		
 		if(data.compareTo(node.getData()) < 0) {
@@ -47,16 +62,20 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 		
 	}
 
-	@Override
-	public T getMax() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	private T getMax(Node<T> node) {
+		if(node.getRightNode()!=null)
+			return getMax(node.getRightNode());
+		
+		return node.getData();
 	}
 
-	@Override
-	public T getMin() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	private T getMin(Node<T> node) {
+		if(node.getLeftNode()!=null)
+			return getMin(node.getLeftNode());
+		
+		return node.getData();
 	}
 
 }
