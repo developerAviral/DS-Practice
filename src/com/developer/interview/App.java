@@ -33,5 +33,14 @@ public class App {
 		/*********************String Reversal*****************/
 		ReverseString reverse = new ReverseString();
 		System.out.println(reverse.getReverseString("Hello"));
+		System.out.println(reverse.getReverseString("Hllo"));
+		
+		
+		/*************************Anagram*********************/
+		Anagram anagram = new Anagram();
+		System.out.println(anagram.isAnagram("LISTEN","SILENt"));
+		System.out.println(anagram.isAnagram("TRIANGLE","integral"));
+		System.out.println(anagram.isAnagram("",""));
+		System.out.println(anagram.isAnagram("",""));
 	}
 }
