@@ -46,6 +46,8 @@ public class App {
 		
 		/************************Repeating elements in Array****************/
 		
+		RepeatingElements repeatingElements = new RepeatingElements();
+		System.out.println(repeatingElements.getRepeatedElements("Heelshdedjs"));
 		
 	}
 }
