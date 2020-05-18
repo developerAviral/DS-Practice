@@ -40,7 +40,12 @@ public class App {
 		Anagram anagram = new Anagram();
 		System.out.println(anagram.isAnagram("LISTEN","SILENt"));
 		System.out.println(anagram.isAnagram("TRIANGLE","integral"));
-		System.out.println(anagram.isAnagram("",""));
-		System.out.println(anagram.isAnagram("",""));
+		System.out.println(anagram.isAnagram("Mother In Law","Hitler Woman"));
+		System.out.println(anagram.isAnagram("keep","seek "));
+		
+		
+		/************************Repeating elements in Array****************/
+		
+		
 	}
 }

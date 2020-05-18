@@ -5,12 +5,14 @@ import java.util.Arrays;
 public class Anagram {
 	
 	public Boolean isAnagram(String s1, String s2) {
-		if(s1.length() != s2.length()) {
+
+		
+		String input1 = (s1.replaceAll("\\s", "")).toLowerCase();
+		String input2 = (s2.replaceAll("\\s", "")).toLowerCase();
+		
+		if(input1.length() != input2.length()) {
 			return false;
 		}
-		
-		String input1 = (s1.replace("\\s", "")).toLowerCase();
-		String input2 = (s2.replace("\\s", "")).toLowerCase();
 		
 		char [] inpArr1 = input1.toCharArray();
 		char [] inpArr2 = input2.toCharArray();
@@ -18,7 +20,7 @@ public class Anagram {
 		Arrays.sort(inpArr1);
 		Arrays.sort(inpArr2);
 		
-		if((new String(inpArr1)).equals(new String(inpArr2))) {
+		if(Arrays.equals(inpArr1, inpArr2)) {
 			return true;
 		}
 		return false;
