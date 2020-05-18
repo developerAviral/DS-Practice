@@ -1,5 +1,6 @@
 package com.developer.interview;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class App {
@@ -48,6 +49,27 @@ public class App {
 		
 		RepeatingElements repeatingElements = new RepeatingElements();
 		System.out.println(repeatingElements.getRepeatedElements("Heelshdedjs"));
+		
+		/*************************Binary Search in Array ******************/
+		BinarySearchInArray<Integer> binarySearchInArray = new BinarySearchInArray<>();
+		Integer [] intArr = new Integer[5];
+		intArr[0] = 100 ;
+		intArr[1] = 105;
+		intArr[2] = 99;
+		intArr[3] =24362 ;
+		intArr[4] = 5362;
+		
+		Arrays.sort(intArr);
+		System.out.println(binarySearchInArray.binarySearchWithRecursion(intArr, 100));
+		System.out.println(binarySearchInArray.binarySearchWithRecursion(intArr, 105));
+		System.out.println(binarySearchInArray.binarySearchWithRecursion(intArr, 99));
+		System.out.println(binarySearchInArray.binarySearchWithRecursion(intArr, 24362));
+		System.out.println(binarySearchInArray.binarySearchWithRecursion(intArr, 5362));
+		System.out.println(binarySearchInArray.binarySearchWithRecursion(intArr, 247362));
+		
+		for(int i : intArr) {
+			System.out.print(" " +i);
+		}
 		
 	}
 }

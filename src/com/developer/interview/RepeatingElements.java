@@ -36,4 +36,8 @@ public class RepeatingElements {
 		return repeatedElementList;
 	}
 
+	public void getRepeatedElementsUsingLambda(String s) {
+		
+		
+	}
 }
