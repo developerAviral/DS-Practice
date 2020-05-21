@@ -59,9 +59,56 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 	}
 
 	@Override
-	public void delete() {
-		// TODO Auto-generated method stub
+	public void delete(T data) {
+		if(this.root != null)
+		{
+			delete(this.root, data);
+		}
 		
+	}
+	
+	private Node<T> delete(Node<T> node, T data){
+		if(node == null)
+			return node;
+		else if(data.compareTo(node.getData()) < 0) {
+			node.setLeftNode(delete(node.getLeftNode(), data));
+		}
+		else if(data.compareTo(node.getData())> 0) {
+			node.setLeftNode(delete(node.getRightNode(), data));
+		}
+		else {
+			if(node.getLeftNode() == null && node.getRightNode() == null) {
+				System.out.println("Removing Leaf node");
+				return null;
+			}
+			else if(node.getLeftNode() == null) {
+				System.out.println("Removing right node");
+				Node<T> temp = node.getRightNode();
+				node = null;
+				return temp;
+			}
+			else if(node.getRightNode() == null) {
+				System.out.println("Removing left node");
+				Node<T> temp = node.getLeftNode();
+				node = null;
+				return temp;
+			}
+			
+			//this is the node with two children case
+			System.out.println("Removing item with 2 child");
+			Node<T> tempNode = getPredecessorNode(node.getLeftNode());
+			node.setData(tempNode.getData());
+			node.setLeftNode(delete(node.getLeftNode(), tempNode.getData()));
+			return tempNode;
+		}
+		return node;
+	}
+	
+	private Node<T> getPredecessorNode(Node<T> node){
+		
+		if(node.getRightNode() != null)
+			return getPredecessorNode(node.getRightNode());
+		return node;
 	}
 
 	

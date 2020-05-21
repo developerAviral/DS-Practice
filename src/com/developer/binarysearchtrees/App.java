@@ -18,5 +18,8 @@ public class App {
 		System.out.println("Min value: " + tree.getMinValue());
 		
 		tree.traverse();
+		System.out.println("\n");
+		tree.delete(32);
+		tree.traverse();
 	}
 }
