@@ -1,6 +1,7 @@
 package com.developer.binarysearchtrees;
 
 public interface Tree<T extends Comparable<T>> {
+	public Node<T> getRoot();
 	public void traverse();
 	public void insert(T data);
 	//public void delete();

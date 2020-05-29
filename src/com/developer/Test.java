@@ -1,11 +1,22 @@
 package com.developer;
 
+import java.util.HashMap;
+import java.util.HashSet;
+
 import com.developer.listds.LinkedList;
 import com.developer.listds.List;
 
-public class Test {
+ public class Test {
 
 	public static void main(String[] args) {
+		
+		HashMap hm = new HashMap<>();
+		Object o1 = new Object();
+		Object o2 = o1;
+		hm.put(o1, 1);
+		hm.put(o2, 3);
+		
+		System.out.println(hm.get(o1));
 		
 		/*Reverse of string*/
 		/*

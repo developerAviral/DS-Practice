@@ -137,4 +137,10 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 		if(node.getRightNode() != null)
 			inOrderTraversal(node.getRightNode());
 	}
+
+	@Override
+	public Node<T> getRoot() {
+		
+		return this.root;
+	}
 }
