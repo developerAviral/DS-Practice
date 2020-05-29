@@ -14,12 +14,6 @@ public class App {
 		tree.insert(-3);
 		tree.insert(453);
 		
-		System.out.println("Max value: " + tree.getMaxValue());
-		System.out.println("Min value: " + tree.getMinValue());
-		
-		tree.traverse();
-		System.out.println("\n");
-		tree.delete(32);
-		tree.traverse();
+		System.out.println(tree.getKSmallest(tree.getRoot(), 5));
 	}
 }

@@ -143,4 +143,24 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 		
 		return this.root;
 	}
+
+	@Override
+	public Node<T> getKSmallest(Node<T> node, int k) {
+		int n = getTreeSize(node.getLeftNode())+ 1;
+		
+		if(n == k)
+			return node;
+		if(n > k)
+			return getKSmallest(node.getLeftNode(), k);
+		if(n < k)
+			return getKSmallest(node.getRightNode(), k-n);
+		
+		return null;
+	}
+	
+	private int getTreeSize(Node<T> node) {
+		if(node == null) return 0;
+		
+		return (getTreeSize(node.getLeftNode()) + getTreeSize(node.getRightNode()) + 1);
+	}
 }
