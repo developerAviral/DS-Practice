@@ -21,6 +21,35 @@ public class AvlTree<T extends Comparable<T>> implements Tree<T>{
 		
 		return height(node.getLeftChild()) - height(node.getRightChild());
 	}
+	
+	private Node rightRotation(Node<T> node) {
+		System.out.println("Rotating to right");
+		
+		Node tempLeftNode = node.getLeftChild();
+		Node t = tempLeftNode.getRightChild();
+		tempLeftNode.setRightChild(node);
+		node.setLeftChild(t);
+		
+		node.setHeight(Math.max(height(node.getLeftChild()),height(node.getRightChild()) ) + 1);
+		tempLeftNode.setHeight(Math.max(height(tempLeftNode.getLeftChild()), height(tempLeftNode.getRightChild())) + 1);
+		
+		return tempLeftNode;
+	}
+	
+	private Node leftRotation(Node<T> node) {
+		System.out.println("Rotating to left");
+		
+		Node tempRightNode = node.getRightChild();
+		Node t = tempRightNode.getLeftChild();
+		tempRightNode.setLeftChild(node);
+		
+		node.setRightChild(t);
+		
+		node.setHeight(Math.max(height(node.getLeftChild()),height(node.getRightChild()) ) + 1);
+		tempRightNode.setHeight(Math.max(height(tempRightNode.getLeftChild()), height(tempRightNode.getRightChild())) + 1);
+		
+		return tempRightNode;
+	}
 
 	@Override
 	public void traverse() {
