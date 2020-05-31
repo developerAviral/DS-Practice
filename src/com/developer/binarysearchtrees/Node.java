@@ -5,6 +5,7 @@ public class Node<T extends Comparable<T>> {
 	private T data;
 	private Node<T> leftNode;
 	private Node<T> rightNode;
+
 	
 	public Node(T data) {
 		super();
@@ -40,6 +41,10 @@ public class Node<T extends Comparable<T>> {
 	public void setRightNode(Node<T> rightNode) {
 		this.rightNode = rightNode;
 	}
+
+
+	
+
 
 
 	@Override

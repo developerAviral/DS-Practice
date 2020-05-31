@@ -5,6 +5,7 @@ public class Node <T extends Comparable<T>> {
 	private T data;
 	private Node<T> leftChild;
 	private Node<T> rightChild;
+	private int height;
 	
 	public Node(T data) {
 		super();
@@ -28,6 +29,15 @@ public class Node <T extends Comparable<T>> {
 	}
 	public void setRightChild(Node<T> rightChild) {
 		this.rightChild = rightChild;
+	}
+	
+	public int getHeight() {
+		return height;
+	}
+
+
+	public void setHeight(int height) {
+		this.height = height;
 	}
 
 	@Override
