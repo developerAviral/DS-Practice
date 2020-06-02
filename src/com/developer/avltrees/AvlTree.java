@@ -7,9 +7,57 @@ public class AvlTree<T extends Comparable<T>> implements Tree<T>{
 	@Override
 	public void insert(T data) {
 		
+		this.root = insert(this.root, data);
+	}
+	
+	private Node<T> insert(Node<T> node, T data){
+		if(node == null) return new Node<T>(data);
+		
+		if(data.compareTo(node.getData()) < 0) {
+			node.setLeftChild(insert(node.getLeftChild(), data));
+		}
+		else {
+			node.setRightChild(insert(node.getRightChild(), data));
+		}
+		
+		node.setHeight(Math.max( height(node.getLeftChild()), height(node.getRightChild())) + 1);
+		
+		node = settleViolation(data, node);
+		
+		return node;
 		
 	}
 	
+	
+	
+	private Node<T> settleViolation(T data, Node<T> node) {
+		int balance = getBalance(node);
+		
+		//Case I : left-left
+		if(balance > 1 && data.compareTo(node.getLeftChild().getData()) < 0) {
+			return rightRotation(node);
+		}
+		
+		//Case II : right-right
+		if(balance < -1 && data.compareTo(node.getRightChild().getData()) > 0) {
+			return leftRotation(node);
+		}
+		
+		//Case III : left right situation
+		if(balance > 1 && data.compareTo(node.getLeftChild().getData())> 0) {
+			node.setLeftChild(leftRotation(node.getLeftChild()));
+			return rightRotation(node);
+		}
+		
+		//Case IV : right left situation
+		if(balance < -1 && data.compareTo(node.getRightChild().getData()) < 0) {
+			node.setRightChild(rightRotation(node.getRightChild()));
+			return leftRotation(node);
+		}
+		
+		return node;
+	}
+
 	private int height(Node<T> node) {
 		if(node == null) return -1;
 		
@@ -22,11 +70,11 @@ public class AvlTree<T extends Comparable<T>> implements Tree<T>{
 		return height(node.getLeftChild()) - height(node.getRightChild());
 	}
 	
-	private Node rightRotation(Node<T> node) {
+	private Node<T> rightRotation(Node<T> node) {
 		System.out.println("Rotating to right");
 		
-		Node tempLeftNode = node.getLeftChild();
-		Node t = tempLeftNode.getRightChild();
+		Node<T> tempLeftNode = node.getLeftChild();
+		Node<T> t = tempLeftNode.getRightChild();
 		tempLeftNode.setRightChild(node);
 		node.setLeftChild(t);
 		
@@ -36,11 +84,11 @@ public class AvlTree<T extends Comparable<T>> implements Tree<T>{
 		return tempLeftNode;
 	}
 	
-	private Node leftRotation(Node<T> node) {
+	private Node<T> leftRotation(Node<T> node) {
 		System.out.println("Rotating to left");
 		
-		Node tempRightNode = node.getRightChild();
-		Node t = tempRightNode.getLeftChild();
+		Node<T> tempRightNode = node.getRightChild();
+		Node<T> t = tempRightNode.getLeftChild();
 		tempRightNode.setLeftChild(node);
 		
 		node.setRightChild(t);
