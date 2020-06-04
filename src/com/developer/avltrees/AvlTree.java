@@ -1,5 +1,7 @@
 package com.developer.avltrees;
 
+import com.developer.avltrees.Node;
+
 public class AvlTree<T extends Comparable<T>> implements Tree<T>{
 
 	private Node<T> root;
@@ -119,6 +121,81 @@ public class AvlTree<T extends Comparable<T>> implements Tree<T>{
 		if(node.getRightChild() != null) {
 			inOrderTraversal(node.getRightChild());
 		}		
+	}
+
+	@Override
+	public void delete(T data) {
+		if(this.root != null)
+		{
+			delete(this.root, data);
+		}		
+	}
+	
+	private Node<T> delete(Node<T> node, T data){
+		if(node == null)
+			return node;
+		else if(data.compareTo(node.getData()) < 0) {
+			node.setLeftChild(delete(node.getLeftChild(), data));
+		}
+		else if(data.compareTo(node.getData())> 0) {
+			node.setLeftChild(delete(node.getRightChild(), data));
+		}
+		else {
+			if(node.getLeftChild() == null && node.getRightChild() == null) {
+				System.out.println("Removing Leaf node");
+				return null;
+			}
+			else if(node.getLeftChild() == null) {
+				System.out.println("Removing right node");
+				Node<T> temp = node.getRightChild();
+				node = null;
+				return temp;
+			}
+			else if(node.getRightChild() == null) {
+				System.out.println("Removing left node");
+				Node<T> temp = node.getLeftChild();
+				node = null;
+				return temp;
+			}
+			
+			//this is the node with two children case
+			System.out.println("Removing item with 2 child");
+			Node<T> tempNode = getPredecessorNode(node.getLeftChild());
+			node.setData(tempNode.getData());
+			node.setLeftChild(delete(node.getLeftChild(), tempNode.getData()));
+		
+		} 	
+		
+		node.setHeight(Math.max(height(node.getLeftChild()), height(node.getRightChild()))+1);
+		return settleDeletion(node);
+	}
+	
+	private Node<T> getPredecessorNode(Node<T> node){
+		
+		if(node.getRightChild() != null)
+			return getPredecessorNode(node.getRightChild());
+		return node;
+	}
+	
+	private Node<T> settleDeletion(Node<T> node){
+		int balance = getBalance(node);
+		
+		if(balance > 1) {
+			if(getBalance(node.getLeftChild())< 0) {
+				node.setLeftChild(leftRotation(node.getLeftChild()));
+			}
+			return rightRotation(node);
+		}
+		
+		if(balance < -1) {
+			if(getBalance(node.getRightChild())> 0) {
+				node.setRightChild(rightRotation(node.getRightChild()));
+			}
+			return leftRotation(node);
+		}
+		
+		return node;
+		
 	}
 
 }

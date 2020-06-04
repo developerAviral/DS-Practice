@@ -13,6 +13,10 @@ public class App {
 		avlTree.insert(70);
 		
 		avlTree.traverse();
+		
+		avlTree.delete(50);
+		
+		avlTree.traverse();
 	}
 
 }
